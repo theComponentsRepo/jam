@@ -8,7 +8,7 @@ export default function HomePage(props) {
   return (
     <div>
       <h1>Home Page</h1>
-      {/* {globalMusicData.map((album)=>{
+      {globalMusicData.map((album)=>{
         return (
           <div key={album.id}>
             <h3>{album.title}</h3>
@@ -25,7 +25,7 @@ export default function HomePage(props) {
             })}  
           </div>
         )
-      })} */}
+      })}
       <Album id={180628682} />
     </div>
   )
