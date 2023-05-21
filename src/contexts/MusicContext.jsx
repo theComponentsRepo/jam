@@ -7,6 +7,7 @@ const initialMusicData = [
     coverSmall: "https://e-cdns-images.dzcdn.net/images/cover/464f5d095862d82564531ed8cfc21002/56x56-000000-80-0-0.jpg",
     coverMedium: "https://e-cdns-images.dzcdn.net/images/cover/464f5d095862d82564531ed8cfc21002/250x250-000000-80-0-0.jpg",
     releaseDate: "2020-10-27",
+    favourite: false,
     artistName:  "TWICE",
     artistPicSmall: "https://e-cdns-images.dzcdn.net/images/artist/2de4aa06b5e00ecf27255fb51b50c9d9/56x56-000000-80-0-0.jpg",
     tracks: [
