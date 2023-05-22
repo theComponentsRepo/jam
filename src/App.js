@@ -1,7 +1,8 @@
-// import './App.css';
+import './App.css';
 
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import { Navigation } from './components/pageNavigation';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/music/album/:id" element={<h1>album playlist page</h1>} />
         <Route path="/music/favourite" element={<h1>favourite page</h1>}/>
       </Routes>
+      <Navigation/>
     </div>
   );
 }
