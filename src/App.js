@@ -9,13 +9,14 @@ import Album from './components/Album';
 function App() {
   return (
     <div className="App">
+      <Navigation/>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/music/search" element={<h1><SearchPage /></h1>} />
+        <Route path="/music/search" element={<SearchPage />} />
         <Route path="/music/album/:id" element={<Album />} />
         <Route path="/music/favourite" element={<h1>favourite page</h1>}/>
       </Routes>
-      <Navigation/>
+      
     </div>
   );
 }

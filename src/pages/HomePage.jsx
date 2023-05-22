@@ -49,16 +49,16 @@ export default function HomePage(props) {
     <div>
 
       <h1>Home Page</h1>
-      {globalMusicData.map((music)=><li key={music.id}>
+      {globalMusicData.map((music)=><div key={music.id}>
         
           <img src={music.cover_small} alt="" />
           <p>{music.id}</p>
           <h3>{music.title}</h3>
           {/* <p>{localArtist.name}</p> */}
-          <p>{music.artist.id}</p>
+          <p>{music.artist.name}</p>
           <p>{music.release_date}</p>
         
-      </li>)}
+      </div>)}
       
     </div>
   )
