@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useMusicData } from "../contexts/MusicContext"
 
 export default function Search() {
@@ -28,6 +29,9 @@ export default function Search() {
       console.error("Error fetching search results:", error);
     }
   };
+  
+  const [redirect, setRedirect] = useState(false)
+
 
   return (
     <div>
@@ -40,9 +44,13 @@ export default function Search() {
 
       <ul className="search-list">
         {searchResults.map((result) => (
-          <li key={result.id}>{result.title}</li>
+          <li key={result.id} onClick={() => setRedirect(true)}>
+          {result.title}
+          {redirect && <Navigate to={'/music/album/'+ parseInt(result.album.id)} />} 
+          {console.log(result.album.id)}</li>
         ))}
       </ul>
+
     </div>
   );
 }

@@ -26,7 +26,6 @@ export default function HomePage(props) {
           </div>
         )
       })}
-      <Album id={180628682} />
     </div>
   )
 }
