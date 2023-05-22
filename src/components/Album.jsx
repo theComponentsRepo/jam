@@ -42,12 +42,10 @@ useEffect(() => {
     } catch (error) {
       console.error(error);  
     }
-  
 }
 fetchData();
 
 }, [localAlbumData]);
-
 
 
   return (
