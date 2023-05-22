@@ -11,7 +11,7 @@ export default function HomePage(props) {
       {globalMusicData.map((album)=>{
         return (
           <div key={album.id}>
-            <h3>{album.title}</h3>
+            {/* <h3>{album.title}</h3>
             <p>{album.artistName}</p>
             <img src={album.artistPicSmall} alt="Twice picture" />
             <img src={album.coverMedium} alt="Twice album cover" />
@@ -22,7 +22,7 @@ export default function HomePage(props) {
                   <audio controls="controls" source src={track.preview} type="audio/mpeg"></audio>
                 </div>
               )
-            })}  
+            })}   */}
           </div>
         )
       })}
