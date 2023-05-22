@@ -1,24 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useLocalStorage } from "react-use";
 
-const initialFavourites = [
-    {
-        id: 1,
-        title: "longjuanfeng",
-        artist: {
-            id: 1,
-        },
-        favourite: true,
-    },
-    {
-        id: 2,
-        title: "longjuanfeng",
-        artist: {
-            id: 1,
-        },
-        favourite: true,      
-    }
-];
+const initialFavourites = [];
 
 const favouriteMusicReducer = (previousState, instructions) => {
     let stateEditable = [...previousState];
@@ -29,16 +12,24 @@ const favouriteMusicReducer = (previousState, instructions) => {
             return stateEditable;
 
         case "toggle":
-            if (
-                stateEditable.find(
-                    (music) => music.id === instructions.data.id
-                )
-            ) {
-                return stateEditable.filter(
-                    (music) => music.id !== instructions.data.id
-                );
+            if (stateEditable[0] == null) {
+                let music = instructions.data
+                music.favourite = true
+                return [music];
             } else {
-                return [...stateEditable, instructions.music];
+                let music = stateEditable.find(
+                    (music) => music.id == instructions.data.id
+                );
+                if (music) {
+                    let newStateEditable = stateEditable.filter(
+                        (music) => music.id != instructions.data.id
+                    );
+                    return newStateEditable;
+                } else {
+                    let newFavourite = instructions.data
+                    newFavourite.favourite = true
+                    return [...stateEditable, newFavourite];
+                }
             }
 
         default:
