@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import useSound from "use-sound";
+import { useParams } from "react-router-dom";
+
 // import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons";
 // import { BiSkipNext, BiSkipPrevious } from "react-icons";
 // import { IconContext } from "react-icons";
@@ -10,8 +11,11 @@ export default function AudioPlayer(){
     // Create local track data variable to store the track's data from api
     const [localTrackData, setLocalTrackData] = useState({});
 
-    // Jie's code for fetching data from deezer API
-    const url = 'https://deezerdevs-deezer.p.rapidapi.com/track/3135556';
+    // useParams, gets track id from the url paramaters and stores in id
+    const { id } = useParams()
+
+    // Jie's code for fetching data from deezer API, uses id to add onto url and fetch data
+    const url = 'https://deezerdevs-deezer.p.rapidapi.com/track/' + id;
     console.log(url)
     const options = {
         method: 'GET',
@@ -21,6 +25,7 @@ export default function AudioPlayer(){
         }
     };
 
+    // Jie's code for fetching data from deezer API
     useEffect(() => {
         const fetchData = async () => {
           try {
@@ -37,12 +42,16 @@ export default function AudioPlayer(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // destructures localTrackData object, returns preview mp3 URL
     const songUrl = localTrackData.preview
 
-    // Create variable isPlaying to track if song is currently playing or not
+    // isPlaying variable uses state to track if currently set to false or true
+    // set to false to begin with
     const [isPlaying, setIsPlaying] = useState(false);
-    // console.log(isPlaying)
+    
 
+    // TogglePlay function changes the boolean of isPlaying
+    // This function allows us to dictate if the music is playing or stopped with conditional rendering
     const togglePlay = () => {
         setIsPlaying(!isPlaying)
     };
@@ -53,8 +62,10 @@ export default function AudioPlayer(){
         <div>
             <h1>Audio</h1>
             <h3>{localTrackData.title}</h3>
-            {/* <h3>{localTrackData.artist.name}</h3> */}
+            <h3>{localTrackData.artist.name}</h3>
+            {/* Button uses toggle play for onclick */}
             <button onClick={togglePlay}>{isPlaying ? "pause":"play"}</button>
+            {/* Conditional rendering, if isPlaying is true, then audio source plays, else audio source is off */}
             {isPlaying && <audio src={songUrl} autoPlay />}
             
         </div>
