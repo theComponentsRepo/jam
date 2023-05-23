@@ -16,7 +16,7 @@ function App() {
         <Route path="/music/search" element={<SearchPage />} />
         <Route path="/music/album/:id" element={<Album />} />
         <Route path="/music/favourite" element={<h1>favourite page</h1>}/>
-        <Route path='/audioplayer' element={<AudioPlayer />} />
+        <Route path="/audioplayer" element={<AudioPlayer />} />
       </Routes>
       
     </div>
