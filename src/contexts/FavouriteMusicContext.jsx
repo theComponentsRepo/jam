@@ -11,26 +11,15 @@ const favouriteMusicReducer = (previousState, instructions) => {
             stateEditable = instructions.data;
             return stateEditable;
 
-        case "toggle":
-            if (stateEditable[0] == null) {
-                let music = instructions.data
-                music.favourite = true
-                return [music];
-            } else {
-                let music = stateEditable.find(
-                    (music) => music.id == instructions.data.id
-                );
-                if (music) {
-                    let newStateEditable = stateEditable.filter(
-                        (music) => music.id != instructions.data.id
-                    );
-                    return newStateEditable;
-                } else {
-                    let newFavourite = instructions.data
-                    newFavourite.favourite = true
-                    return [...stateEditable, newFavourite];
-                }
-            }
+        case 'toggleOn':
+            let newFavourite = instructions.data
+            return [...stateEditable, newFavourite];
+
+        case 'toggleOff':
+            let newStateEditable = stateEditable.filter(
+                (music) => music.id != instructions.data.id
+            );
+            return newStateEditable;
 
         default:
             return previousState;
@@ -57,7 +46,7 @@ export default function FavouriteMusicProvider(props) {
     // store data into the local storage
     const [persistentData, setPersistentData] = useLocalStorage(
         "favourites",
-        JSON.stringify(initialFavourites)
+        initialFavourites
     );
 
     useEffect(() => {
