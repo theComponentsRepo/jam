@@ -6,7 +6,11 @@ import {
 import Heart from "react-animated-heart";
 
 export default function ToggleFavouriteButton(props) {
-    let track = props.data;
+    let track = {
+        ...props.data,
+        cover_small: props.img,
+        artist: props.artist
+    };
 
     const globalFavourites = useFavouriteMusic();
     const globalFavouritesDispatch = useFavouriteMusicDispatch();
