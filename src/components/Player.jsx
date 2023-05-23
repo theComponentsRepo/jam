@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-// import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons";
-// import { BiSkipNext, BiSkipPrevious } from "react-icons";
-// import { IconContext } from "react-icons";
-
 
 export default function AudioPlayer(){
 
