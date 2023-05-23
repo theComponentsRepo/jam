@@ -9,7 +9,6 @@ import {
 export default function HomePage(props) {
     const globalMusicData = useMusicData();
     const dispatch = useMusicDispatch();
-    const [localArtist, setLocalArtist] = useState({});
 
     const globalFavourites = useFavouriteMusic();
     const globalFavouritesDispatch = useFavouriteMusicDispatch();
@@ -32,7 +31,17 @@ export default function HomePage(props) {
                         } else {
                             data.favourite = false;
                         }
-                        dispatch({ type: "add", data: data });
+                        const artistResponse = await fetch("https://deezerdevs-deezer.p.rapidapi.com/artist/" + data.artist.id, options())
+                        const artistData = await artistResponse.json()
+                        const newData = {
+                            id: data.id,
+                            title: data.title,
+                            cover_small: data.cover_small,
+                            release_date: data.release_date,
+                            artist: artistData.name
+
+                        }
+                        dispatch({ type: "add", data: newData });
                         i++;
                     }
                 } catch (error) {
@@ -43,22 +52,6 @@ export default function HomePage(props) {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(
-                    "https://deezerdevs-deezer.p.rapidapi.com/artist/" +
-                        globalMusicData.artist.id,
-                    options()
-                );
-                const data = await response.json();
-                setLocalArtist(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchData();
-    }, [globalMusicData]);
 
     const ToggleFavourite = (event) => {
         let music = globalMusicData.find(
@@ -76,8 +69,7 @@ export default function HomePage(props) {
                     <img src={music.cover_small} alt="" />
                     <p>{music.id}</p>
                     <h3>{music.title}</h3>
-                    <p>{localArtist.name}</p>
-                    <p>{music.artist.id}</p>
+                    <p>{music.artist}</p>
                     <p>{music.release_date}</p>
                     <button
                         onClick={ToggleFavourite}
