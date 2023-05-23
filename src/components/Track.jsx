@@ -13,7 +13,7 @@ export default function Tracks(props) {
                 <p>{artist}</p>
             </div>
             <div className="track-fav flex-1">
-                <ToggleFavouriteButton data={data} img={img} artist={artist}/>
+                <ToggleFavouriteButton data={data} />
             </div>
         </div>
     );

@@ -11,8 +11,8 @@ export default function FavouritePage(props) {
                 {globalFavourites.map((track) => (
                     <Tracks
                         data={track}
-                        img={track.cover_small}
-                        artist={track.artist}
+                        img={track.album.cover_small}
+                        artist={track.artist.name}
                     />
                 ))}
             </div>
