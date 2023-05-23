@@ -60,7 +60,7 @@ export default function AlbumPage(props) {
           {console.log(localTrackData)}
           <div>
             {localTrackData.map((track)=>
-            <Tracks id={track.id} img={localAlbumData.cover_small} artist={localAlbumData.artist}/>)}
+            <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist}/>)}
           </div>
 
       </div>
