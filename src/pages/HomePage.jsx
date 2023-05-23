@@ -5,6 +5,7 @@ import {
     useFavouriteMusic,
     useFavouriteMusicDispatch,
 } from "../contexts/FavouriteMusicContext";
+import { Navigate } from "react-router-dom";
 
 export default function HomePage(props) {
     const globalMusicData = useMusicData();
@@ -12,6 +13,10 @@ export default function HomePage(props) {
 
     const globalFavourites = useFavouriteMusic();
     const globalFavouritesDispatch = useFavouriteMusicDispatch();
+
+    const [redirect, setRedirect] = useState(false)
+    const [selectedMusicId, setSelectedMusicId] = useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -61,11 +66,17 @@ export default function HomePage(props) {
         console.log(music);
     };
 
+    const handleMusicClick = (musicId) => {
+        setSelectedMusicId(musicId);
+        setRedirect(true);
+    };
+
     return (
         <div>
             <h1>Home Page</h1>
+            
             {globalMusicData.map((music) => (
-                <li key={music.id}>
+                <li key={music.id} onClick={() => handleMusicClick(music.id)}>
                     <img src={music.cover_small} alt="" />
                     <p>{music.id}</p>
                     <h3>{music.title}</h3>
@@ -78,8 +89,11 @@ export default function HomePage(props) {
                     >
                         Favourite: {String(music.favourite)}
                     </button>
+                    {console.log(music.id)}
+                    
                 </li>
             ))}
+            {redirect && selectedMusicId && <Navigate to={'/music/album/'+ selectedMusicId} /> } 
         </div>
     );
 }
