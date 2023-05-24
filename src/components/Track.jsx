@@ -1,11 +1,19 @@
+import { useState } from "react";
+import AudioPlayer from "./AudioPlayer";
 import ToggleFavouriteButton from "./ToggleFavouriteButton";
 
 
 export default function Tracks(props) {
-    const { data, img, artist } = props;
+    const { data, img, artist, onClick} = props;
+
+    const handleClick = (data) => {
+        onClick(data) 
+
+    }
 
     return (
-        <div className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50">
+        <div>
+            <div className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50" onClick={()=>handleClick(data)}>
             <div className="track-image ">
                 <img className="w-18" src={img} alt="" />
             </div>
@@ -20,5 +28,8 @@ export default function Tracks(props) {
 
             </div>
         </div>
+        </div>
+
+        
     );
 }
