@@ -51,42 +51,6 @@ export default function HomePage(props) {
         <div>
             <h1>Home Page</h1>
 
-<<<<<<< HEAD
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://deezerdevs-deezer.p.rapidapi.com/artist/'+ globalMusicData.artist.id, options());
-        const data = await response.json();
-        setLocalArtist(data)
-      } catch (error) {
-        console.error(error);  
-      }
-    
-  }
-  fetchData();
-  
-  }, [globalMusicData]);
-
-
-  return (
-    <div>
-
-      <h1>Home Page</h1>
-      {globalMusicData.map((music)=><div key={music.id}>
-        
-          <img src={music.cover_small} alt="" />
-          <p>{music.id}</p>
-          <h3>{music.title}</h3>
-          {/* <p>{localArtist.name}</p> */}
-          <p>{music.artist.name}</p>
-          <p>{music.release_date}</p>
-        
-      </div>)}
-      
-    </div>
-  )
-}
-=======
             {globalMusicData.map((music) => (
                 <li key={music.id} onClick={() => handleMusicClick(music.id)}>
                     <img src={music.cover_small} alt="" />
@@ -103,4 +67,3 @@ export default function HomePage(props) {
         </div>
     );
 }
->>>>>>> 1606bb0582613e619d2a89fee22691697d7c8fa2
