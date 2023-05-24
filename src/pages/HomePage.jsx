@@ -76,7 +76,7 @@ export default function HomePage(props) {
   }, [globalMusicData]);
 
   return (
-    <div className="flex flex-wrap p-3 justify-center items-start gap-3">
+    <div className="flex flex-wrap p-3 justify-evenly items-start gap-3">
       {/* {globalMusicData.map((music) => (
         <div key={music.id}>
           <img src={music.cover_small} alt="" />
