@@ -9,38 +9,45 @@ export default function HomePage(props) {
 
   const [redirect, setRedirect] = useState(false);
   const [selectedMusicId, setSelectedMusicId] = useState(null);
+  const [dataFetched, setDataFetched] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      let i = 0;
-      while (i < 5) {
-        try {
-          const response = await fetch(randomURL(), options());
-          const data = await response.json();
-          if (data.error === undefined) {
-            const artistResponse = await fetch(
-              "https://deezerdevs-deezer.p.rapidapi.com/artist/" +
-                data.artist.id,
-              options()
-            );
-            const artistData = await artistResponse.json();
-            const newData = {
-              id: data.id,
-              title: data.title,
-              cover_small: data.cover_small,
-              release_date: data.release_date,
-              artist: artistData.name,
-            };
-            dispatch({ type: "add", data: newData });
-            i++;
+      if (!dataFetched) {
+        let i = 0;
+        while (i < 5) {
+          try {
+            const response = await fetch(randomURL(), options());
+            const data = await response.json();
+            if (data.error === undefined) {
+              const artistResponse = await fetch(
+                "https://deezerdevs-deezer.p.rapidapi.com/artist/" +
+                  data.artist.id,
+                options()
+              );
+              const artistData = await artistResponse.json();
+              const newData = {
+                id: data.id,
+                title: data.title,
+                cover_small: data.cover_small,
+                release_date: data.release_date,
+                artist: artistData.name,
+              };
+              dispatch({ type: "add", data: newData });
+              i++;
+            }
+            if (i === 5) {
+              break;
+            }
+          } catch (error) {
+            console.error(error);
           }
-        } catch (error) {
-          console.error(error);
         }
+        setDataFetched(true);
       }
     };
     fetchData();
-  }, []);
+  }, [dataFetched, dispatch]);
 
   const handleMusicClick = (musicId) => {
     setSelectedMusicId(musicId);
