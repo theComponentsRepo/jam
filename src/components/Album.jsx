@@ -40,7 +40,7 @@ export default function Album(props) {
     <div className="album-container">
     {localAlbumData ? 
     <div>
-      <h5>{localAlbumData.id}</h5>
+      {/* <h5>{localAlbumData.id}</h5> */}
         <img src={localAlbumData.cover_medium} alt=""/>
         <h1> {localAlbumData.title}</h1>
         <p>{localAlbumData.artist}</p>
