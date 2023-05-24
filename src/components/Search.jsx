@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useMusicData } from "../contexts/MusicContext"
+import { Navigate} from "react-router-dom";
+import { AiOutlineSearch } from 'react-icons/ai';
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,7 +31,11 @@ export default function Search() {
   };
   
   const [redirect, setRedirect] = useState(false)
-
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <div>
@@ -39,8 +43,9 @@ export default function Search() {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
       />
-      <button onClick={handleSearch}>Search</button>
+      <AiOutlineSearch onClick={handleSearch} />
 
       <ul className="search-list">
         {searchResults.map((result) => (
