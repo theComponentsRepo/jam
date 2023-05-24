@@ -4,38 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function AudioPlayer(props){
   
-  // Send track Id via props from album page, store in id variable
-    // const id  = localTrackData.id
-
-    // Jie's code for fetching data from deezer API, uses id to add onto url and fetch data
-    // const url = 'https://deezerdevs-deezer.p.rapidapi.com/track/' + id;
-    // console.log(url)
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //     'X-RapidAPI-Key': '577990ecfemshcaf230c6fa2818dp1d2fa8jsn711963dcaf86',
-    //     'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-    //     }
-    // };
-
-    // // Jie's code for fetching data from deezer API
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       try {
-    //         const response = await fetch(url, options);
-    //         const data = await response.json();
-    //         console.log(data)
-    //         setLocalTrackData(data)
-    //       } catch (error) {
-    //         console.error(error);
-    //       }
-    //   }
-    //   fetchData();
-
-    // // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
-
-    // destructures localTrackData object, returns preview mp3 URL
+  
     const songUrl = props;
     console.log(songUrl.props)
 
@@ -58,8 +27,6 @@ export default function AudioPlayer(props){
     return(
         <div>
             <h1>Audio</h1>
-            {/* <h3>{localTrackData.title}</h3>
-            <h3>{localTrackData.artist.name}</h3> */}
             {/* Button uses toggle play for onclick */}
             <button onClick={togglePlay}>{isPlaying ? "pause":"play"}</button>
             {/* Conditional rendering, if isPlaying is true, then audio source plays, else audio source is off */}

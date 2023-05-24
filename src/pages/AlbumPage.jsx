@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tracks from "../components/Track";
-import AudioPlayer from "../components/Player";
+
 
 export default function AlbumPage(props) {
 
