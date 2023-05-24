@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useMusicData, useMusicDispatch } from "../contexts/MusicContext";
 import { options, randomURL } from "../functions/randomURL";
 import { Navigate } from "react-router-dom";
+import AlbumMedium from "../components/AlbumMedium";
 
 export default function HomePage(props) {
   const globalMusicData = useMusicData();
@@ -30,6 +31,7 @@ export default function HomePage(props) {
                 id: data.id,
                 title: data.title,
                 cover_small: data.cover_small,
+                cover_medium: data.cover_medium,
                 release_date: data.release_date,
                 artist: artistData.name,
               };
@@ -54,10 +56,6 @@ export default function HomePage(props) {
     setRedirect(true);
   };
 
-  const extractYear = (dateString) => {
-    const date = new Date(dateString);
-    return date.getFullYear();
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,19 +76,20 @@ export default function HomePage(props) {
   }, [globalMusicData]);
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      {globalMusicData.map((music) => (
+    <div className="flex flex-wrap p-3 justify-evenly items-start gap-3">
+      {/* {globalMusicData.map((music) => (
         <div key={music.id}>
           <img src={music.cover_small} alt="" />
-          {/* <p>{music.id}</p> */}
           <h3>{music.title}</h3>
-          {/* <p>{localArtist.name}</p> */}
           <p>{music.artist}</p>
           <p>{extractYear(music.release_date)}</p>
         </div>
       ))}
 
+      {redirect && selectedMusicId && (
+        <Navigate to={"/music/album/" + selectedMusicId} />
+      )} */}
+      {globalMusicData.map((music)=><AlbumMedium onClick={()=>handleMusicClick(music.id)} albumInfo={music}/>)}
       {redirect && selectedMusicId && (
         <Navigate to={"/music/album/" + selectedMusicId} />
       )}
