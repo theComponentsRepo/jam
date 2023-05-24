@@ -96,19 +96,19 @@ export default function HomePage(props) {
       )}
     </div>
   );
-            {globalMusicData.map((music) => (
-                <li key={music.id} onClick={() => handleMusicClick(music.id)}>
-                    <img src={music.cover_small} alt="" />
-                    <p>{music.id}</p>
-                    <h3>{music.title}</h3>
-                    <p>{music.artist}</p>
-                    <p>{music.release_date}</p>
-                    {console.log(music.id)}
-                </li>
-            ))}
-            {redirect && selectedMusicId && (
-                <Navigate to={"/music/album/" + selectedMusicId} />
-            )}
-        </div>
-    );
+    //     //     {globalMusicData.map((music) => (
+    //     //         <li key={music.id} onClick={() => handleMusicClick(music.id)}>
+    //     //             <img src={music.cover_small} alt="" />
+    //     //             <p>{music.id}</p>
+    //     //             <h3>{music.title}</h3>
+    //     //             <p>{music.artist}</p>
+    //     //             <p>{music.release_date}</p>
+    //     //             {console.log(music.id)}
+    //     //         </li>
+    //     //     ))}
+    //     //     {redirect && selectedMusicId && (
+    //     //         <Navigate to={"/music/album/" + selectedMusicId} />
+    //     //     )}
+    //     // </div>
+    // );
 }

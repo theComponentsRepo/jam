@@ -3,10 +3,15 @@ import AudioPlayer from "./Player";
 
 
 export default function Tracks(props) {
-    const { data, img, artist } = props;
+    const { data, img, artist, onCustomEvent } = props;
+
+    const handleClick = () => {
+        const trackUrl = data.preview;
+        onCustomEvent(trackUrl);
+    }
 
     return (
-        <div className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50">
+        <div onClick={handleClick} className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50">
             <div className="track-image ">
                 <img className="w-18" src={img} alt="" />
             </div>

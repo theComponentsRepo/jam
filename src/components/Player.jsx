@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
+import { useState } from "react";
+
 
 
 export default function AudioPlayer(props){
@@ -31,7 +31,6 @@ export default function AudioPlayer(props){
             <button onClick={togglePlay}>{isPlaying ? "pause":"play"}</button>
             {/* Conditional rendering, if isPlaying is true, then audio source plays, else audio source is off */}
             {isPlaying && <audio src={songUrl.props} autoPlay />}
-            
         </div>
     )
 }

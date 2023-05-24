@@ -45,9 +45,14 @@ export default function AlbumPage(props) {
       } catch (error) {
         console.error(error);
       }
-  }
-  fetchData();
-}, [id]);
+    }
+    fetchData();
+  }, [id]);
+
+
+  const handleCustomEvent = (value) => {
+    console.log("received value from custom event" + value)
+  };
 
 
   return (
@@ -61,7 +66,7 @@ export default function AlbumPage(props) {
           {console.log(localTrackData)}
           <div>
             {localTrackData.map((track)=>
-            <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} trackUrl={localTrackData.preview}/>)}
+            <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} onCustomEvent={handleCustomEvent} trackUrl={localTrackData.preview}/>)}
 
           </div>
 
