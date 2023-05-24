@@ -1,5 +1,5 @@
 import ToggleFavouriteButton from "./ToggleFavouriteButton";
-import AudioPlayer from "./Player";
+// import AudioPlayer from "./Player";
 
 
 export default function Tracks(props) {
@@ -19,9 +19,9 @@ export default function Tracks(props) {
                 <h5 className="text-xl font-bold">{data.title}</h5>
                 <p>{artist}</p>
             </div>
-            <div>
+            {/* <div>
                 <AudioPlayer props={data.preview} />
-            </div>
+            </div> */}
             <div className="track-fav flex-none relative ml-24">
                 <div className="toggle-container w-24 h-24 absolute -top-5 right-0">
                     <ToggleFavouriteButton data={data} />

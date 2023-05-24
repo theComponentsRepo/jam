@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tracks from "../components/Track";
+import AudioPlayer from "../components/Player";
 
 
 export default function AlbumPage(props) {
@@ -49,10 +50,20 @@ export default function AlbumPage(props) {
     fetchData();
   }, [id]);
 
+  const [playTrack, setPlayTrack] = useState(null);
+  const [songReady, setSongReady] = useState(false);
+
+
 
   const handleCustomEvent = (value) => {
-    console.log("received value from custom event" + value)
+    console.log("received value from custom event " + value);
+    setPlayTrack(value);
+    setSongReady(true);
   };
+
+
+  console.log(playTrack)
+  console.log(songReady)
 
 
   return (
@@ -68,6 +79,9 @@ export default function AlbumPage(props) {
             {localTrackData.map((track)=>
             <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} onCustomEvent={handleCustomEvent} trackUrl={localTrackData.preview}/>)}
 
+          </div>
+          <div>
+            {songReady ? <AudioPlayer props={playTrack} /> : null}
           </div>
 
       </div>
