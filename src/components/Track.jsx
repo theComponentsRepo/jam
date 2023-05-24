@@ -1,7 +1,5 @@
-import { useState } from "react";
 import AudioPlayer from "./AudioPlayer";
 import ToggleFavouriteButton from "./ToggleFavouriteButton";
-import AudioPlayer from "./Player";
 
 
 export default function Tracks(props) {
