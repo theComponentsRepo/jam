@@ -4,10 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { Navigation } from './components/PageNavigation';
 import SearchPage from './pages/SearchPage';
-import { AlbumPage } from './pages/AlbumPage';
-import { FavouritePage } from './pages/FavouritesPage';
-import Album from './components/Album';
-import AudioPlayer from './components/Player';
+import AlbumPage from './pages/AlbumPage';
+import FavouritePage from './pages/FavouritesPage';
+// import Album from './components/Album';
+// import AudioPlayer from './components/Player';
 
 function App() {
   return (

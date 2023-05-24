@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tracks from "../components/Track";
+import AudioPlayer from "../components/Player";
 
 export default function AlbumPage(props) {
 
@@ -60,7 +61,8 @@ export default function AlbumPage(props) {
           {console.log(localTrackData)}
           <div>
             {localTrackData.map((track)=>
-            <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist}/>)}
+            <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} trackUrl={localTrackData.preview}/>)}
+
           </div>
 
       </div>

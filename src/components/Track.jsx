@@ -1,4 +1,5 @@
 import ToggleFavouriteButton from "./ToggleFavouriteButton";
+import AudioPlayer from "./Player";
 
 export default function Tracks(props) {
     const { data, img, artist } = props;
@@ -11,6 +12,9 @@ export default function Tracks(props) {
             <div className="track-content flex-1">
                 <h5>{data.title}</h5>
                 <p>{artist}</p>
+            </div>
+            <div>
+                <AudioPlayer props={data.preview} />
             </div>
             <div className="track-fav flex-1">
                 <ToggleFavouriteButton data={data} />
