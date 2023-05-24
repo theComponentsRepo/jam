@@ -6,7 +6,7 @@ export default function Tracks(props) {
     const { data, img, artist } = props;
 
     return (
-        <div className="track-container flex border-solid border-2 border-black content-center relative p-6 mb-3">
+        <div className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50">
             <div className="track-image ">
                 <img className="w-18" src={img} alt="" />
             </div>
