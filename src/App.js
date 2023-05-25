@@ -4,8 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { Navigation } from './components/PageNavigation';
 import SearchPage from './pages/SearchPage';
-import FavouritePage from './pages/FavouritesPage';
 import AlbumPage from './pages/AlbumPage';
+import FavouritePage from './pages/FavouritesPage';
+
 
 function App() {
   return (

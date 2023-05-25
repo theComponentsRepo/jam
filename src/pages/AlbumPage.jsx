@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AudioPlayer from "../components/AudioPlayer";
 import Tracks from "../components/Track";
 
+
 export default function AlbumPage(props) {
 
   const [localAlbumData, setLocalAlbumData] = useState(null)
@@ -61,6 +62,7 @@ export default function AlbumPage(props) {
     <div className="album-container">
       {localAlbumData ? 
       <div>
+
         <div className="mb-16">
           <h5>{localAlbumData.id}</h5>
             <img src={localAlbumData.cover_medium} alt=""/>
