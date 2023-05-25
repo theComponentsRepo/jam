@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Jam - the music app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Team: The Components
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Jam is a music app that allows users to search for songs, add them to a playlist, and listen to them. Due to the nature of the Deezer API, the app is limited to 30 second previews of songs. By default, the home page displays random albums, which provides a good way for users to explore and discover new music. The app is fully responsive and works on all screen sizes.
 
-### `npm start`
+## Contributors
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Jie Zhou](https://github.com/Jiezhoue)
+- [Ji Li](https://github.com/JiLi94)
+- [Liam Massey](https://github.com/Liam-M-Dev)
+- [Daniel Kelly](https://github.com/danielkellydev)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Access the App
 
-### `npm test`
+[Live demo](https://jam-music-player.netlify.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies used to build the app
 
-### `npm run build`
+- React
+- React Router
+- React Hooks
+- React Context
+- Deezer API
+- Tailwind CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Languages used to build the app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- JavaScript
+- Jsx
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Endpoints
 
-### `npm run eject`
+- Home page: `/`
+- Search page: `/music/search`
+- Favourites page: `/music/favourite`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Search for songs
+- Add songs to a playlist
+- Listen to songs
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Contributions are welcome. Feel free to submit a pull request!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
