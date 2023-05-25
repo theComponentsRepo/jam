@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AudioPlayer from "../components/AudioPlayer";
 import Tracks from "../components/Track";
@@ -50,6 +50,7 @@ export default function AlbumPage(props) {
       }
   }
   fetchData();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [id]);
 
   const handleClick = (track) => {

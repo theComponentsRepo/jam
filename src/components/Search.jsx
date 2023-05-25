@@ -1,71 +1,80 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import SearchSuggestion from "./SearchSuggestion";
+import Track from "../components/Track";
 
 export default function Search() {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [redirect, setRedirect] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
 
-    useEffect(() => {
-        handleSearch();
-    }, [searchTerm]);
+  useEffect(() => {
+    handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]);
 
-    const handleSearch = async () => {
-        try {
-            const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}`;
-            const options = {
-                method: "GET",
-                headers: {
-                    "X-RapidAPI-Key":
-                        "795a6357demsh86ab0e1151acb21p137dadjsn2ba8063e32bb",
-                    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-                },
-            };
+  const handleSearch = async () => {
+    try {
+      const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}`;
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": "795a6357demsh86ab0e1151acb21p137dadjsn2ba8063e32bb",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      };
 
-            const response = await fetch(url, options);
-            const data = await response.json();
+      const response = await fetch(url, options);
+      const data = await response.json();
 
-            // Extract the search results from the API response
-            const results = data.data || [];
+      // Extract the search results from the API response
+      const results = data.data || [];
 
-            // Update the searchResults state with the retrieved search results
-            setSearchResults(results);
-        } catch (error) {
-            console.error("Error fetching search results:", error);
-        }
-    };
+      // Update the searchResults state with the retrieved search results
+      setSearchResults(results);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
 
-    const [redirect, setRedirect] = useState(false);
-    const handleKeyPress = (event) => {
-        if (event.key === "Enter") {
-            handleSearch();
-        }
-    };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
 
+  const handleClick = (track) => {
+    setSelectedTrack(track);
+    setRedirect(true);
+  };
+
+  if (redirect && selectedTrack) {
     return (
-        <div>
-            <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyPress={handleKeyPress}
-            />
-            <AiOutlineSearch onClick={handleSearch} />
-            <SearchSuggestion setSearchTerm={setSearchTerm}/>
-            <ul className="search-list">
-                {searchResults.map((result) => (
-                    <li key={result.id} onClick={() => setRedirect(true)}>
-                        {result.title}
-                        {redirect && (
-                            <Navigate
-                                to={"/music/album/" + parseInt(result.album.id)}
-                            />
-                        )}
-                        {console.log(result.album.id)}
-                    </li>
-                ))}
-            </ul>
-        </div>
+      <Navigate to={"/music/album/" + parseInt(selectedTrack.album.id)} />
     );
+  }
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
+      />
+      <AiOutlineSearch onClick={handleSearch} />
+      <div className="search-list">
+        {searchResults.map((result) => (
+          <Track
+            key={result.id}
+            data={result}
+            img={result.album.cover_small}
+            artist={result.artist.name}
+            onClick={handleClick}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
