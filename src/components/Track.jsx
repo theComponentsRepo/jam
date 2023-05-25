@@ -12,7 +12,7 @@ export default function Tracks(props) {
 
     return (
         <div className="relative">
-            <div className="track-container flex shadow-md content-center p-6 mb-3 bg-slate-50 cursor-pointer hover:bg-slate-200 duration-500" onClick={handleClick}>
+            <div className="track-container flex shadow-md content-center p-6 mb-3 bg-slate-50 hover:bg-slate-200 cursor-pointer duration-500 hover:shadow-xl" onClick={handleClick}>
                 <div className="track-image ">
                     <img className="w-18" src={img} alt="" />
                 </div>

@@ -76,7 +76,7 @@ export default function HomePage(props) {
   }, [globalMusicData]);
 
   return (
-    <div className="flex flex-wrap p-3 justify-evenly items-start gap-3 mb-14 cursor-pointer">
+    <div className="flex flex-wrap p-3 justify-evenly items-start gap-3 mb-14">
       {globalMusicData.map((music)=><AlbumMedium onClick={()=>handleMusicClick(music.id)} albumInfo={music}/>)}
       {redirect && selectedMusicId && (
         <Navigate to={"/music/album/" + selectedMusicId} />
