@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {BsPlayCircle, BsPauseCircle, BsSkipStartCircle, BsSkipEndCircle} from 'react-icons/bs';
+import 'tailwindcss/tailwind.css';
 
 export default function AudioPlayer(props) {
   const {mp3List, isPlaying, selectedTrackIndex, setSelectedTrackIndex, setIsPlaying} = props;
@@ -87,29 +88,30 @@ export default function AudioPlayer(props) {
   }
 
   return mp3 ? (
-    <div className='flex flex-col fixed bottom-0 left-0 right-0'>
+    <div className='w-90 lg:w-1/2 mx-auto flex rounded-md lg:rounded-full md:rounded-full my-2 mx-2 flex-col bg-cyan-600 bg-opacity-75 text-neutral-50 font-semibold fixed bottom-0 left-0 right-0'>
       <audio src={mp3.preview} ref={audioRef} onTimeUpdate={onPlaying}/>
-      <p >{mp3.title} - {mp3.artist.name}</p>
+      <p className='whitespace-normal py-2 px-4'>{mp3.title} - {mp3.artist.name}</p>
     
       {/* progress bar */}
-      <div>
+      <div className='w-1/2 mx-auto'>
         <div className="min-w-full bg-gray-400 h-1.5 rounded cursor-pointer" onClick={checkWidth} ref={clickRef}>
-          <div className="w-0 h-full bg-lime-700 rounded" style={{width: `${progress+"%"}`}}></div>
+          <div className="w-0 h-full bg-neutral-50 bg-opacity-75 rounded" style={{width: `${progress+"%"}`}}></div>
         </div>
       </div>
 
-      <div className='flex m-auto'>
+      <div className='flex m-auto '>
         {/* previous track button */}
-        <BsSkipStartCircle onClick={prevTrack} />
+        <BsSkipStartCircle className="text-4xl mx-2 my-2 bg-cyan-600 text-white rounded-full p-2 shadow-lg hover:bg-cyan-600 hover:bg-opacity-60 hover:shadow-xl" onClick={prevTrack} />
         {/* play/pause button */}
         {isPlaying ? (
-          <BsPauseCircle onClick={() => setIsPlaying(!isPlaying)} />
+          <BsPauseCircle className="text-4xl mx-2 my-2 bg-cyan-600 text-white rounded-full p-2 shadow-lg hover:bg-cyan-600 hover:bg-opacity-60 hover:shadow-xl" onClick={() => setIsPlaying(!isPlaying)} />
         ) : (
-          <BsPlayCircle onClick={() => setIsPlaying(!isPlaying)} />
+          <BsPlayCircle className="text-4xl mx-2 my-2 bg-cyan-600 text-white rounded-full p-2 shadow-lg hover:bg-cyan-600 hover:bg-opacity-60 hover:shadow-xl" onClick={() => setIsPlaying(!isPlaying)} />
         )}
         {/* next track button */}
-        <BsSkipEndCircle onClick={nextTrack} />
+        <BsSkipEndCircle className="text-4xl mx-2 my-2 bg-cyan-600 text-white rounded-full p-2 shadow-lg hover:bg-cyan-600 hover:bg-opacity-60 hover:shadow-xl" onClick={nextTrack} />
       </div>
+
     </div>
   ) : null;
   // return 
