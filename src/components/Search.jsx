@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import SearchSuggestion from "./SearchSuggestion";
 
 export default function Search() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -9,6 +8,7 @@ export default function Search() {
 
     useEffect(() => {
         handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchTerm]);
 
     const handleSearch = async () => {
@@ -52,7 +52,6 @@ export default function Search() {
                 onKeyPress={handleKeyPress}
             />
             <AiOutlineSearch onClick={handleSearch} />
-            <SearchSuggestion setSearchTerm={setSearchTerm}/>
             <ul className="search-list">
                 {searchResults.map((result) => (
                     <li key={result.id} onClick={() => setRedirect(true)}>

@@ -5,14 +5,14 @@ import ToggleFavouriteButton from "./ToggleFavouriteButton";
 export default function Tracks(props) {
     const { data, img, artist, onClick} = props;
 
-    const handleClick = (data) => {
+    const handleClick = () => {
         onClick(data) 
 
     }
 
     return (
         <div>
-            <div className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50" onClick={()=>handleClick(data)}>
+            <div className="track-container flex shadow-md content-center relative p-6 mb-3 bg-slate-50" onClick={handleClick}>
             <div className="track-image ">
                 <img className="w-18" src={img} alt="" />
             </div>

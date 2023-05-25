@@ -50,6 +50,7 @@ export default function AlbumPage(props) {
       }
   }
   fetchData();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [id]);
 
   const handleClick = (track) => {
