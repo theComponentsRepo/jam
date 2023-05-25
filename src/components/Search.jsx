@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useMusicData } from "../contexts/MusicContext"
+import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { AiOutlineSearch } from "react-icons/ai";
+import Track from "../components/Track";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [redirect, setRedirect] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  useEffect(() => {
+    handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]);
 
   const handleSearch = async () => {
     try {
@@ -29,28 +37,53 @@ export default function Search() {
       console.error("Error fetching search results:", error);
     }
   };
-  
-  const [redirect, setRedirect] = useState(false)
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleClick = (track) => {
+    setSelectedTrack(track);
+    setRedirect(true);
+  };
+
+  if (redirect && selectedTrack) {
+    return (
+      <Navigate to={"/music/album/" + parseInt(selectedTrack.album.id)} />
+    );
+  }
 
   return (
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
-
-      <ul className="search-list">
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center mb-4">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyPress={handleKeyPress}
+          className="flex-grow border border-gray-300 rounded px-4 py-2 mr-2"
+          placeholder="Enter a search term"
+        />
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
+          onClick={handleSearch}
+        >
+          <AiOutlineSearch />
+        </button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {searchResults.map((result) => (
-          <li key={result.id} onClick={() => setRedirect(true)}>
-          {result.title}
-          {redirect && <Navigate to={'/music/album/'+ parseInt(result.album.id)} />} 
-          {console.log(result.album.id)}</li>
+          <Track
+            key={result.id}
+            data={result}
+            img={result.album.cover_small}
+            artist={result.artist.name}
+            onClick={handleClick}
+          />
         ))}
-      </ul>
-
+      </div>
     </div>
   );
 }
