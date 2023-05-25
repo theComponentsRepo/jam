@@ -56,15 +56,24 @@ export default function Search() {
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyPress={handleKeyPress}
-      />
-      <AiOutlineSearch onClick={handleSearch} />
-      <div className="search-list">
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center mb-4">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyPress={handleKeyPress}
+          className="flex-grow border border-gray-300 rounded px-4 py-2 mr-2"
+          placeholder="Enter a search term"
+        />
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
+          onClick={handleSearch}
+        >
+          <AiOutlineSearch />
+        </button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {searchResults.map((result) => (
           <Track
             key={result.id}
