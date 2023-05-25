@@ -13,7 +13,7 @@ const favouriteMusicReducer = (previousState, instructions) => {
 
         case 'toggleOn':
             let newFavourite = instructions.data
-            return [...stateEditable, newFavourite];
+            return [newFavourite, ...stateEditable, ];
 
         case 'toggleOff':
             let newStateEditable = stateEditable.filter(
