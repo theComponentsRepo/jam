@@ -15,7 +15,7 @@ export default function FavouritePage(props) {
   };
 
   return (
-    <div>
+    <div className="mb-10">
       <h1>Favourite Playlist</h1>
       <div>
         {globalFavourites.map((track) => (
