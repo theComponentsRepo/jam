@@ -5,13 +5,12 @@ import AudioPlayer from "../components/AudioPlayer";
 
 export default function FavouritePage(props) {
   const globalFavourites = useFavouriteMusic();
-  const {setMp3} = props
-  // const [selectedTrack, setSelectedTrack] = useState(null);
+  const {setMp3List, setSelectedTrackIndex} = props;
 
   const handleClick = (track) => {
-    console.log("Track clicked:", track);
-    // setSelectedTrack(track);
-    setMp3(track);
+    let currentTrackIndex = globalFavourites.indexOf(track)
+    setMp3List(globalFavourites);
+    setSelectedTrackIndex(currentTrackIndex);
   };
 
   return (

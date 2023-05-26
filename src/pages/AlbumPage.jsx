@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AlbumLarge from "../components/AudioPlayer"
 
 import Tracks from "../components/Track";
 
 
 export default function AlbumPage(props) {
 
-  const {setMp3} = props
+  const {setMp3List, setSelectedTrackIndex} = props
   
   const [localAlbumData, setLocalAlbumData] = useState(null)
   const [localTrackData, setLocalTrackData] = useState(null)
@@ -61,9 +62,10 @@ export default function AlbumPage(props) {
 }, [id]);
 
   const handleClick = (track) => {
-    console.log('click')
-    setMp3(track)
-    // console.log(onPlayTrack)
+    console.log("Track clicked:", track);
+    let currentTrackIndex = localTrackData.indexOf(track)
+    setMp3List(localTrackData);
+    setSelectedTrackIndex(currentTrackIndex);
   }
 
   return (
