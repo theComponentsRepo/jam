@@ -13,6 +13,7 @@ import AudioPlayer from './components/AudioPlayer';
 function App() {
   const [mp3List, setMp3List] = useState([]);
   const [selectedTrackIndex, setSelectedTrackIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false)
 
   return (
     <div className="App">
@@ -20,10 +21,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/music/search" element={<h1><SearchPage /></h1>} />
-        <Route path="/music/album/:id" element={<AlbumPage setMp3List={setMp3List} setSelectedTrackIndex={setSelectedTrackIndex}/>} />
-        <Route path="/music/favourite" element={<FavouritePage setMp3List={setMp3List} setSelectedTrackIndex={setSelectedTrackIndex}/>}/>
+        <Route path="/music/album/:id" element={<AlbumPage setMp3List={setMp3List} setSelectedTrackIndex={setSelectedTrackIndex} setIsPlaying={setIsPlaying}/>} />
+        <Route path="/music/favourite" element={<FavouritePage setMp3List={setMp3List} setSelectedTrackIndex={setSelectedTrackIndex} setIsPlaying={setIsPlaying}/>}/>
       </Routes>
-      <AudioPlayer mp3List={mp3List} selectedTrackIndex={selectedTrackIndex} setSelectedTrackIndex={setSelectedTrackIndex}/>
+      <AudioPlayer mp3List={mp3List} selectedTrackIndex={selectedTrackIndex} isPlaying={isPlaying} setSelectedTrackIndex={setSelectedTrackIndex} setIsPlaying={setIsPlaying}/>
     </div>
   );
 }

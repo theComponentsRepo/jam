@@ -7,7 +7,7 @@ import Tracks from "../components/Track";
 
 export default function AlbumPage(props) {
 
-  const {setMp3List, setSelectedTrackIndex} = props
+  const {setMp3List, setSelectedTrackIndex, setIsPlaying} = props
   
   const [localAlbumData, setLocalAlbumData] = useState(null)
   const [localTrackData, setLocalTrackData] = useState(null)
@@ -66,6 +66,7 @@ export default function AlbumPage(props) {
     let currentTrackIndex = localTrackData.indexOf(track)
     setMp3List(localTrackData);
     setSelectedTrackIndex(currentTrackIndex);
+    setIsPlaying(true);
   }
 
   return (
