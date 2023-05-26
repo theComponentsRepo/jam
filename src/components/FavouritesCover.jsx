@@ -18,7 +18,7 @@ export default function FavouritesCover(props) {
         <div className="album-large-content text-left	flex flex-col justify-between xs:flex-row">
           <div className="album-title xs:flex">
             <p className="drop-shadow-xl xs:text-xs xs:pr-5">Playlist</p>
-            <p className=" font-extrabold	drop-shadow-xl xs:font-normal	  xs:text-xs  xs:font-none sm:text-4xl sm:leading-none md:text-5xl lg:text-6xl">Liked Songs</p>
+            <p className=" font-extrabold	drop-shadow-xl xs:font-normal	  xs:text-xs  xs:font-none sm:text-4xl sm:leading-none md:text-6xl lg:text-8xl">Liked Songs</p>
           </div>
           <p className="xs:pl-5 xs:text-xs"> {data.length} Songs</p>
 
