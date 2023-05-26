@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AlbumLarge from "../components/AudioPlayer"
+import AlbumLarge from "../components/AlbumLarge";
+
 
 import Tracks from "../components/Track";
 

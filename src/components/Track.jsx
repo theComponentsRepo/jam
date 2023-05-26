@@ -23,8 +23,9 @@ export default function Tracks(props) {
                 <div>
                     <AudioPlayer props={data.preview} />
                 </div>
-
+                <div className="block w-10"></div>
             </div>
+
             <div className="track-fav absolute top-0 right-0">
                     <div className="toggle-container">
                         <ToggleFavouriteButton data={data} />

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Tracks from "../components/Track";
 import { useFavouriteMusic } from "../contexts/FavouriteMusicContext";
 import AudioPlayer from "../components/AudioPlayer";
+import AlbumLarge from "../components/AlbumLarge";
+import FavouritesCover from "../components/FavouritesCover";
 
 export default function FavouritePage(props) {
   const globalFavourites = useFavouriteMusic();
@@ -16,8 +18,8 @@ export default function FavouritePage(props) {
 
   return (
     <div className="mb-10">
-      <h1>Favourite Playlist</h1>
       <div>
+      <FavouritesCover data={globalFavourites}/>
         {globalFavourites.map((track) => (
           <div key={track.id}>
             <Tracks
