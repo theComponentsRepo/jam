@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AlbumLarge from "../components/AlbumLarge";
 import AudioPlayer from "../components/AudioPlayer";
 import Tracks from "../components/Track";
 
@@ -35,6 +36,7 @@ export default function AlbumPage(props) {
           const trackResult = await trackResponse.json()
           return trackResult;
         } )
+        {console.log(data)}
         const trackResults = await Promise.all(trackPromise);
         setLocalTrackData([...trackResults])
 
@@ -43,7 +45,11 @@ export default function AlbumPage(props) {
           title: data.title,
           cover_medium: data.cover_medium,
           cover_small: data.cover_small,
-          artist: artistData.name
+          cover_big: data.cover_big,
+          artist: artistData.name,
+          duration: data.duration,
+          release_date: data.release_date,
+          numOfSongs: trackResults.length
         })
       } catch (error) {
         console.error(error);
@@ -63,12 +69,9 @@ export default function AlbumPage(props) {
     <div className="album-container">
       {localAlbumData ? 
       <div>
-
+        {console.log(localAlbumData)}
         <div className="mb-16">
-          <h5>{localAlbumData.id}</h5>
-            <img src={localAlbumData.cover_medium} alt=""/>
-            <h1> {localAlbumData.title}</h1>
-            <p>{localAlbumData.artist}</p>
+            <AlbumLarge data={localAlbumData} />
             <div>
               {localTrackData.map((track)=>
               <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} onClick={()=>handleClick(track)}/>)}
