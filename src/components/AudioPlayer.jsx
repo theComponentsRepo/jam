@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import {BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, BsSkipEndCircleFill, BsFillSkipEndCircleFill} from 'react-icons/bs';
-import './AudioPlayer.css'
+import {BsPlayCircle, BsPauseCircle, BsSkipStartCircle, BsSkipEndCircle} from 'react-icons/bs';
 
 export default function AudioPlayer(props) {
   const {mp3List, isPlaying, selectedTrackIndex, setSelectedTrackIndex, setIsPlaying} = props;
@@ -9,7 +8,8 @@ export default function AudioPlayer(props) {
   const [mp3, setMp3] = useState(null);
   const [isReadyToPlay, setIsReadyToPlay] = useState(false);
   const [progress, setProgress] = useState(0);
-  // const [isPlaying, setIsPlaying] = useState(false);
+  // default track length by the API
+  const trackDuration = 30; 
 
   useEffect(() => {
     if (mp3List && selectedTrackIndex !== null) {
@@ -73,9 +73,8 @@ export default function AudioPlayer(props) {
   }
 
   const onPlaying = () => {
-    const duration = 30;
     const ct = audioRef.current.currentTime;
-    setProgress(ct / duration * 100 )
+    setProgress(ct / trackDuration * 100 )
   }
 
   const checkWidth = (e)=>
@@ -84,24 +83,33 @@ export default function AudioPlayer(props) {
     const offset = e.nativeEvent.offsetX;
 
     const divprogress = offset / width * 100;
-    audioRef.current.currentTime = divprogress / 100 * 30;
-
+    audioRef.current.currentTime = divprogress / 100 * trackDuration;
   }
 
   return mp3 ? (
     <div className='flex flex-col fixed bottom-0 left-0 right-0'>
       <audio src={mp3.preview} ref={audioRef} onTimeUpdate={onPlaying}/>
-      <p>{mp3.title}</p>
-      <div className="navigation_wrapper" onClick={checkWidth} ref={clickRef}>
-          <div className="seek_bar" style={{width: `${progress+"%"}`}}></div>
+      <p >{mp3.title} - {mp3.artist.name}</p>
+    
+      {/* progress bar */}
+      <div>
+        <div className="min-w-full bg-gray-400 h-1.5 rounded cursor-pointer" onClick={checkWidth} ref={clickRef}>
+          <div className="w-0 h-full bg-lime-700 rounded" style={{width: `${progress+"%"}`}}></div>
+        </div>
       </div>
-      <BsFillSkipStartCircleFill className='btn_action' onClick={prevTrack} />
-      {isPlaying ? (
-        <BsFillPauseCircleFill className='' onClick={() => setIsPlaying(!isPlaying)} />
-      ) : (
-        <BsFillPlayCircleFill className='' onClick={() => setIsPlaying(!isPlaying)} />
-      )}
-      <BsFillSkipEndCircleFill className='btn_action' onClick={nextTrack} />
+
+      <div className='flex m-auto'>
+        {/* previous track button */}
+        <BsSkipStartCircle onClick={prevTrack} />
+        {/* play/pause button */}
+        {isPlaying ? (
+          <BsPauseCircle onClick={() => setIsPlaying(!isPlaying)} />
+        ) : (
+          <BsPlayCircle onClick={() => setIsPlaying(!isPlaying)} />
+        )}
+        {/* next track button */}
+        <BsSkipEndCircle onClick={nextTrack} />
+      </div>
     </div>
   ) : null;
   // return 

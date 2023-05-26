@@ -12,7 +12,6 @@ export default function FavouritePage(props) {
     setMp3List(globalFavourites);
     setSelectedTrackIndex(currentTrackIndex);
     setIsPlaying(true);
-    console.log(track);
   };
 
   return (
