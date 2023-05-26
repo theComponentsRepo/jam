@@ -1,6 +1,6 @@
 export default function AlbumLarge(props) {
 
-  const { data} = props;
+  const {data} = props;
 
   function convertSecondsToHoursAndMinutes(seconds) {
     // Convert seconds to minutes
