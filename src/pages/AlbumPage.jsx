@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AlbumLarge from "../components/AlbumLarge";
-import AudioPlayer from "../components/AudioPlayer";
+
 import Tracks from "../components/Track";
 
 
 export default function AlbumPage(props) {
 
+  const {setMp3} = props
+  
   const [localAlbumData, setLocalAlbumData] = useState(null)
   const [localTrackData, setLocalTrackData] = useState(null)
   const {id} = useParams();
 
-  const [onPlayTrack, setOnPlayTrack] = useState(null)
+  // const [onPlayTrack, setOnPlayTrack] = useState(null)
 
 
   const url = 'https://deezerdevs-deezer.p.rapidapi.com/album/'+ parseInt(id);
@@ -61,8 +62,8 @@ export default function AlbumPage(props) {
 
   const handleClick = (track) => {
     console.log('click')
-    setOnPlayTrack(track)
-    console.log(onPlayTrack)
+    setMp3(track)
+    // console.log(onPlayTrack)
   }
 
   return (
@@ -77,7 +78,7 @@ export default function AlbumPage(props) {
               <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} onClick={()=>handleClick(track)}/>)}
             </div>
         </div>
-        <AudioPlayer mp3={onPlayTrack} />
+        {/* <AudioPlayer mp3={onPlayTrack} /> */}
 
       </div>
 

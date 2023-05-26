@@ -5,15 +5,17 @@ import AudioPlayer from "../components/AudioPlayer";
 
 export default function FavouritePage(props) {
   const globalFavourites = useFavouriteMusic();
-  const [selectedTrack, setSelectedTrack] = useState(null);
+  const {setMp3} = props
+  // const [selectedTrack, setSelectedTrack] = useState(null);
 
   const handleClick = (track) => {
     console.log("Track clicked:", track);
-    setSelectedTrack(track);
+    // setSelectedTrack(track);
+    setMp3(track);
   };
 
   return (
-    <div>
+    <div className="mb-10">
       <h1>Favourite Playlist</h1>
       <div>
         {globalFavourites.map((track) => (
@@ -27,7 +29,7 @@ export default function FavouritePage(props) {
           </div>
         ))}
       </div>
-      {selectedTrack && <AudioPlayer mp3={selectedTrack} />}
+      {/* {selectedTrack && <AudioPlayer mp3={selectedTrack} />} */}
     </div>
   );
 }
