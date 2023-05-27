@@ -56,7 +56,7 @@ export default function Search() {
   }
 
   return (
-    <div>
+    <div className="dark:bg-slate-900">
       <div className="flex justify-center w-full h-11 px-3 my-5">
         <input  type="text" 
                 className="flex-1 border border-gray-300 rounded px-3 py-2"
