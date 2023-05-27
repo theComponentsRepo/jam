@@ -19,7 +19,7 @@ export default function FavouritePage(props) {
   return (
     <div className="mb-10">
       <div>
-      <FavouritesCover data={globalFavourites}/>
+        <FavouritesCover data={globalFavourites}/>
         {globalFavourites.map((track) => (
           <div key={track.id}>
             <Tracks

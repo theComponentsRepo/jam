@@ -3,7 +3,7 @@ import Search from "../components/Search";
 
 export default function SearchPage() {
   return (
-    <div>
+    <div className="h-screen">
       <Search />
     </div>
   );
