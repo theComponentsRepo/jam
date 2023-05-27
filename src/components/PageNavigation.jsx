@@ -12,6 +12,7 @@ export const Navigation = () => {
           <ToggleThemeButton />
         </li>
 
+
         <li>
           <NavLink exact to='/' activeClassName='active'>
             <AiFillHome className='nav-icon dark:text-white hover:dark:text-gray-600' />
