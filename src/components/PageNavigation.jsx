@@ -4,8 +4,11 @@ import { AiFillHome, AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
 
 export const Navigation = () => {
   return (
-    <nav className='flex justify-center content-center p-2 bg-slate-100 sticky top-0 left-0 right-0 mb-2 shadow-lg'>
+    <nav className='flex justify-between content-center p-2 bg-slate-100 sticky top-0 left-0 right-0  shadow-lg z-40'>
+      <h5 className="font-['Caveat'] text-left text-3xl pl-8">Jam</h5>
       <ul className='nav-list'>
+
+
         <li>
           <NavLink exact to='/' activeClassName='active'>
             <AiFillHome className='nav-icon' />

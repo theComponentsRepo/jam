@@ -6,19 +6,25 @@ import { Navigation } from './components/PageNavigation';
 import SearchPage from './pages/SearchPage';
 import AlbumPage from './pages/AlbumPage';
 import FavouritePage from './pages/FavouritesPage';
+import { useState } from 'react';
+import AudioPlayer from './components/AudioPlayer';
 
 
 function App() {
+  const [mp3List, setMp3List] = useState([]);
+  const [selectedTrackIndex, setSelectedTrackIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  
   return (
     <div className="App">
       <Navigation/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/music/search" element={<h1><SearchPage /></h1>} />
-        <Route path="/music/album/:id" element={<AlbumPage />} />
-        <Route path="/music/favourite" element={<FavouritePage />}/>
+        <Route path="/music/album/:id" element={<AlbumPage {...{setMp3List, setSelectedTrackIndex, setIsPlaying}}/>} />
+        <Route path="/music/favourite" element={<FavouritePage {...{setMp3List, setSelectedTrackIndex, setIsPlaying}}/>}/>
       </Routes>
-      
+      <AudioPlayer {...{mp3List, selectedTrackIndex, isPlaying, setSelectedTrackIndex, setIsPlaying}} />
     </div>
   );
 }

@@ -56,23 +56,16 @@ export default function Search() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center mb-4">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyPress={handleKeyPress}
-          className="flex-grow border border-gray-300 rounded px-4 py-2 mr-2"
-          placeholder="Enter a search term"
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
-          onClick={handleSearch}
-        >
-          <AiOutlineSearch />
-        </button>
-      </div>
+    <div>
+      <div className="flex justify-center w-full lg:w-1/2 h-11 px-3 my-5 mx-auto">
+        <input  type="text" 
+                className="flex-1 border border-gray-300 rounded px-3 py-2"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Find your Jam" />
+        <button onClick={handleSearch} className="bg-cyan-600 hover:bg-opacity-60 rounded-full text-white font-semibold px-4 py-3 mx-2 rounded"> <AiOutlineSearch /></button>
+      </div> 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {searchResults.map((result) => (
           <Track
@@ -84,6 +77,10 @@ export default function Search() {
           />
         ))}
       </div>
-    </div>
+
+
+      </div>
+
+      
   );
 }

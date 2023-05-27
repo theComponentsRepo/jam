@@ -16,7 +16,7 @@ export default function HomePage(props) {
     const fetchData = async () => {
       if (!dataFetched) {
         let i = 0;
-        while (i < 5) {
+        while (i < 15) {
           try {
             const response = await fetch(randomURL(), options());
             const data = await response.json();
@@ -38,7 +38,7 @@ export default function HomePage(props) {
               dispatch({ type: "add", data: newData });
               i++;
             }
-            if (i === 5) {
+            if (i === 15) {
               break;
             }
           } catch (error) {
@@ -76,7 +76,7 @@ export default function HomePage(props) {
   }, [globalMusicData]);
 
   return (
-    <div className="flex flex-wrap p-3 justify-evenly items-start gap-3">
+    <div className="flex flex-wrap p-3 justify-evenly items-start gap-3 mb-14">
       {globalMusicData.map((music)=><AlbumMedium onClick={()=>handleMusicClick(music.id)} albumInfo={music}/>)}
       {redirect && selectedMusicId && (
         <Navigate to={"/music/album/" + selectedMusicId} />

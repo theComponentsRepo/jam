@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AudioPlayer from "../components/AudioPlayer";
+import AlbumLarge from "../components/AlbumLarge";
+
+
 import Tracks from "../components/Track";
 
 
 export default function AlbumPage(props) {
 
+  const {setMp3List, setSelectedTrackIndex, setIsPlaying} = props
+  
   const [localAlbumData, setLocalAlbumData] = useState(null)
   const [localTrackData, setLocalTrackData] = useState(null)
   const {id} = useParams();
 
-  const [onPlayTrack, setOnPlayTrack] = useState(null)
+  // const [onPlayTrack, setOnPlayTrack] = useState(null)
 
 
   const url = 'https://deezerdevs-deezer.p.rapidapi.com/album/'+ parseInt(id);
@@ -35,6 +39,7 @@ export default function AlbumPage(props) {
           const trackResult = await trackResponse.json()
           return trackResult;
         } )
+        {console.log(data)}
         const trackResults = await Promise.all(trackPromise);
         setLocalTrackData([...trackResults])
 
@@ -43,7 +48,11 @@ export default function AlbumPage(props) {
           title: data.title,
           cover_medium: data.cover_medium,
           cover_small: data.cover_small,
-          artist: artistData.name
+          cover_big: data.cover_big,
+          artist: artistData.name,
+          duration: data.duration,
+          release_date: data.release_date,
+          numOfSongs: trackResults.length
         })
       } catch (error) {
         console.error(error);
@@ -54,27 +63,26 @@ export default function AlbumPage(props) {
 }, [id]);
 
   const handleClick = (track) => {
-    console.log('click')
-    setOnPlayTrack(track)
-    console.log(onPlayTrack)
+    console.log("Track clicked:", track);
+    let currentTrackIndex = localTrackData.indexOf(track)
+    setMp3List(localTrackData);
+    setSelectedTrackIndex(currentTrackIndex);
+    setIsPlaying(true);
   }
 
   return (
     <div className="album-container">
       {localAlbumData ? 
       <div>
-
+        {console.log(localAlbumData)}
         <div className="mb-16">
-          <h5>{localAlbumData.id}</h5>
-            <img src={localAlbumData.cover_medium} alt=""/>
-            <h1> {localAlbumData.title}</h1>
-            <p>{localAlbumData.artist}</p>
+            <AlbumLarge data={localAlbumData} />
             <div>
               {localTrackData.map((track)=>
               <Tracks data={track} img={localAlbumData.cover_small} artist={localAlbumData.artist} onClick={()=>handleClick(track)}/>)}
             </div>
         </div>
-        <AudioPlayer mp3={onPlayTrack} />
+        {/* <AudioPlayer mp3={onPlayTrack} /> */}
 
       </div>
 
