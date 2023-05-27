@@ -8,6 +8,7 @@ export const Navigation = () => {
       <h5 className="font-['Caveat'] text-left text-3xl pl-8">Jam</h5>
       <ul className='nav-list'>
 
+
         <li>
           <NavLink exact to='/' activeClassName='active'>
             <AiFillHome className='nav-icon' />

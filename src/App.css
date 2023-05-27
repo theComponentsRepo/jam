@@ -40,7 +40,7 @@
 .active {
   /* Styles for active links */
   font-weight: bold;
-  color: blue;
+  color: #0891B2;
 }
 
 .nav-list {
