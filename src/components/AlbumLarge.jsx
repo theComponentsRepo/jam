@@ -24,7 +24,7 @@ export default function AlbumLarge(props) {
   return (
     <div>
       { data && 
-      <div className="album-large-container p-4 flex bg-cyan-600 text-neutral-100 xs:flex-col xs:items-center xs:gap-2">
+      <div className="album-large-container p-4 flex bg-cyan-600 text-neutral-100 xs:flex-col xs:items-center xs:gap-2 dark:bg-slate-800">
 
         <div className="album-large-img px-3 drop-shadow-xl xs:px-0 xs:w-64 sm:w-56 md:w-72 lg:w-72	">
           <img src={data.cover_big} alt="" />
